@@ -13,7 +13,7 @@ Easily display a customizable clock in your OBS streams! This widget allows you 
 
 1. **Download or Use Hosted Version**:
    - You can download the `index.html` file from this repository and host it on your server or use it locally in OBS.
-   - Alternatively, use the hosted version at: [Clock Widget Hosted Version](http://yourdomain.com/index.html).
+   - Alternatively, use the hosted version at: [Clock Widget Hosted Version](https://stream-koolaid.github.io/Clock-Widget/).
 2. **Add to OBS**:
    - Open OBS. 📺
    - Add a **Browser Source** to your scene. 🔄
@@ -38,7 +38,7 @@ You can customize the clock using the following query parameters:
 ### Example URL 🔗
 
 ```
-http://yourdomain.com/index.html?dateFormat=MMMM%20Do%20YYYY%20h:mm:ss%20A&fontSize=50px&fontFamily=Verdana%2C%20sans-serif&fontWeight=700&textTransform=capitalize&color=%23ff0000&textShadow=3px%203px%205px%20rgba(0%2C%200%2C%200%2C%200.7)
+https://stream-koolaid.github.io/Clock-Widget?dateFormat=MMMM%20Do%20YYYY%20h:mm:ss%20A&fontSize=50px&fontFamily=Verdana%2C%20sans-serif&fontWeight=700&textTransform=capitalize&color=%23ff0000&textShadow=3px%203px%205px%20rgba(0%2C%200%2C%200%2C%200.7)
 ```
 
 ## Contributing ✨
