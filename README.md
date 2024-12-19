@@ -32,6 +32,7 @@ You can customize the clock using the following query parameters:
 | `fontFamily` | Font family. | `Verdana, sans-serif` |
 | `fontWeight` | Font weight. | `700` |
 | `textTransform` | Text transformation (e.g., capitalize, uppercase). | `capitalize` |
+| `letterSpacing` | Letter spacing. | `0px` |
 | `color` | Text color (in HEX). | `#ff0000` |
 | `textShadow` | Shadow for the text. | `3px 3px 5px rgba(0, 0, 0, 0.7)` |
 
