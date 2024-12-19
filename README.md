@@ -13,13 +13,13 @@ Easily display a customizable clock in your OBS streams! This widget allows you 
 
 1. **Download or Use Hosted Version**:
    - You can download the `index.html` file from this repository and host it on your server or use it locally in OBS.
-   - Alternatively, use the hosted version at: [Clock Widget Hosted Version](https://stream-koolaid.github.io/Clock-Widget/).
+   - Alternatively, use the hosted version at: <a href="https://stream-koolaid.github.io/Clock-Widget/" target="_blank">Clock Widget Hosted Version</a>.
 2. **Add to OBS**:
    - Open OBS. 📺
    - Add a **Browser Source** to your scene. 🔄
    - Set the URL to the hosted version or your local file path.
 3. **Quick Customization**:
-   - Use our [Quick Setup Page](http://yourdomain.com/setup) to easily generate the query string for your desired customization without manual URL editing. 💡
+   - Use our <a href="http://yourdomain.com/setup" target="_blank">Quick Setup Page</a> to easily generate the query string for your desired customization without manual URL editing. 💡
 
 ## URL Customization ✍️
 
