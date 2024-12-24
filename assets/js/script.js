@@ -1,5 +1,10 @@
+/*╔══════════════╗*/
+/*║  PARAMETERS  ║*/
+/*╚══════════════╝*/
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+
 const dateFormat = urlParams.get('dateFormat') || 'ddd DD MMM yyyy hh:mm:ss A';
 const fontSize = urlParams.get('fontSize') || '40px';
 const fontFamily = urlParams.get('fontFamily') || 'Roboto, sans-serif';
@@ -7,8 +12,12 @@ const fontWeight = urlParams.get('fontWeight') || '600';
 const textTransform = urlParams.get('textTransform') || 'uppercase';
 const color = urlParams.get('color') || '#fff';
 const textShadow =
-	urlParams.get('textShadow') || '2px 2px 2px rgba(0, 0, 0, 0.5)';
+	urlParams.get('textShadow') || '2px 2px 2px rgba(0, 0, 0, 1)';
 const letterSpacing = urlParams.get('letterSpacing') || '0px';
+
+/*╔═══════════════╗*/
+/*║  CLOCK LABEL  ║*/
+/*╚═══════════════╝*/
 
 const clockLabel = document.getElementById('clockLabel');
 clockLabel.style.fontSize = fontSize;
