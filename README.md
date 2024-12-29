@@ -12,34 +12,54 @@ Easily display a customizable clock in your OBS streams! This widget allows you 
 ## Quick Setup ⚙️
 
 1. **Download or Use Hosted Version**:
-   - You can download the `index.html` file from this repository and host it on your server or use it locally in OBS.
-   - Alternatively, use the hosted version at: <a href="https://stream-koolaid.github.io/Clock-Widget/" target="_blank">Clock Widget Hosted Version</a>.
+   - You can download the [`Clock Widget`](https://github.com/Stream-KoolAid/Clock-Widget/releases) file from this repository and host it on your server or use it locally in OBS.
+   - Alternatively, use the hosted version at: [Clock Widget Hosted Version](https://stream-koolaid.github.io/Clock-Widget/widget/clock.html).
 2. **Add to OBS**:
    - Open OBS. 📺
    - Add a **Browser Source** to your scene. 🔄
    - Set the URL to the hosted version or your local file path.
 3. **Quick Customization**:
-   - Use our <a href="http://yourdomain.com/setup" target="_blank">Quick Setup Page</a> to easily generate the query string for your desired customization without manual URL editing. 💡
+   - Use our [Quick Setup Page](https://stream-koolaid.github.io/Clock-Widget) to easily generate the query string for your desired customization without manual URL editing. 💡
 
 ## URL Customization ✍️
 
-You can customize the clock using the following query parameters:
+Some customization options are still available as URL query parameters:
 
-| Parameter | Description | Example Value |
-| --- | --- | --- |
+| Parameter    | Description              | Example Value            |
+| ------------ | ------------------------ | ------------------------ |
 | `dateFormat` | Format of the date/time. | `MMMM Do YYYY h:mm:ss A` |
-| `fontSize` | Size of the font. | `50px` |
-| `fontFamily` | Font family. | `Verdana, sans-serif` |
-| `fontWeight` | Font weight. | `700` |
-| `textTransform` | Text transformation (e.g., capitalize, uppercase). | `capitalize` |
-| `letterSpacing` | Letter spacing. | `0px` |
-| `color` | Text color (in HEX). | `#ff0000` |
-| `textShadow` | Shadow for the text. | `3px 3px 5px rgba(0, 0, 0, 0.7)` |
+| `fontFamily` | Font family.             | `Verdana`                |
 
 ### Example URL 🔗
 
 ```
-https://stream-koolaid.github.io/Clock-Widget?dateFormat=MMMM%20Do%20YYYY%20h:mm:ss%20A&fontSize=50px&fontFamily=Verdana%2C%20sans-serif&fontWeight=700&textTransform=capitalize&color=%23ff0000&textShadow=3px%203px%205px%20rgba(0%2C%200%2C%200%2C%200.7)
+https://stream-koolaid.github.io/Clock-Widget/widget/clock.html?dateFormat=MMMM%20Do%20YYYY%20h:mm:ss%20A&fontFamily=Verdana
+```
+
+## Customization with CSS 🌱
+
+As of the latest update, most text styling is now managed via CSS custom properties. This provides greater flexibility and control over the appearance of your clock widget. Customize the following variables in the `:root` selector:
+
+### Available CSS Variables
+
+| Variable | Description | Default Value |
+| --- | --- | --- |
+| `--letter-spacing` | Spacing between letters. | `0px` |
+| `--font-size` | Size of the font. | `40px` |
+| `--font-weight` | Font weight. | `600` |
+| `--text-transform` | Text transformation (e.g., capitalize, uppercase). | `uppercase` |
+| `--text-color` | Text color. | `#fff` |
+| `--text-shadow` | Shadow for the text. | `2px 2px 2px rgba(0, 0, 0, 1)` |
+
+```css
+:root {
+	--letter-spacing: 0px;
+	--font-size: 40px;
+	--font-weight: 600;
+	--text-transform: uppercase;
+	--text-color: #fff;
+	--text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
 ```
 
 ## Contributing ✨
