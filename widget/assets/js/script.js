@@ -2,46 +2,93 @@
 /*║  PARAMETERS  ║*/
 /*╚══════════════╝*/
 
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
+// Constants and Configuration
+const CONFIG = {
+	DEFAULTS: {
+		dateFormat: 'ddd DD MMM yyyy hh:mm:ss A',
+		fontFamily: 'Roboto, sans-serif',
+	},
+	FONT: {
+		LOAD_REFERENCE_SIZE: '16px',
+	},
+};
 
-const dateFormat = urlParams.get('dateFormat') || 'ddd DD MMM yyyy hh:mm:ss A';
-const fontSize = urlParams.get('fontSize') || '40px';
-const fontFamily = urlParams.get('fontFamily') || 'Roboto, sans-serif';
-const fontWeight = urlParams.get('fontWeight') || '600';
-const textTransform = urlParams.get('textTransform') || 'uppercase';
-const color = urlParams.get('color') || '#fff';
-const textShadow =
-	urlParams.get('textShadow') || '2px 2px 2px rgba(0, 0, 0, 1)';
-const letterSpacing = urlParams.get('letterSpacing') || '0px';
+// URL Parameters Handler
+class URLParamsHandler {
+	constructor() {
+		this.params = new URLSearchParams(window.location.search);
+	}
 
-/*╔═══════════════╗*/
-/*║  CLOCK LABEL  ║*/
-/*╚═══════════════╝*/
-
-const clockLabel = document.getElementById('clockLabel');
-clockLabel.style.fontSize = fontSize;
-clockLabel.style.fontFamily = fontFamily;
-clockLabel.style.fontWeight = fontWeight;
-clockLabel.style.textTransform = textTransform;
-clockLabel.style.color = color;
-clockLabel.style.textShadow = textShadow;
-clockLabel.style.letterSpacing = letterSpacing;
-
-function loadFont(fontFamily) {
-	const link = document.createElement('link');
-	link.href = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(
-		/ /g,
-		'+'
-	)}&display=swap`;
-	link.rel = 'stylesheet';
-	document.head.appendChild(link);
+	getString(key, defaultValue) {
+		return this.params.get(key) || defaultValue;
+	}
 }
-loadFont(fontFamily);
 
-function updateClock() {
-	const now = moment();
-	const formattedDate = now.format(dateFormat);
-	clockLabel.textContent = formattedDate;
+const params = new URLParamsHandler();
+
+// Settings
+const settings = {
+	dateFormat: params.getString('dateFormat', CONFIG.DEFAULTS.dateFormat),
+	fontFamily: params.getString('fontFamily', CONFIG.DEFAULTS.fontFamily),
+};
+
+// Font Loader
+class FontLoader {
+	static async load(fontFamily) {
+		if (!fontFamily) return;
+
+		const link = document.createElement('link');
+		link.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(
+			fontFamily.split(',')[0].trim()
+		)}:100,300,400,500,700,900`;
+		link.rel = 'stylesheet';
+		document.head.appendChild(link);
+
+		try {
+			await document.fonts.load(
+				`${CONFIG.FONT.LOAD_REFERENCE_SIZE} ${fontFamily}`
+			);
+		} catch (error) {
+			console.warn(`Failed to load font: ${fontFamily}`, error);
+		}
+	}
 }
-setInterval(updateClock, 1000);
+
+// Clock Manager
+class ClockManager {
+	constructor(settings) {
+		this.settings = settings;
+		this.clockLabel = document.getElementById('clockLabel');
+		if (!this.clockLabel) throw new Error('Clock element not found');
+
+		this.applyStyles();
+	}
+
+	applyStyles() {
+		this.clockLabel.style.fontFamily = this.settings.fontFamily;
+	}
+
+	updateClock() {
+		const now = moment();
+		this.clockLabel.textContent = now.format(this.settings.dateFormat);
+	}
+
+	start() {
+		this.updateClock();
+		setInterval(() => this.updateClock(), 1000);
+	}
+}
+
+// Initialize
+async function init() {
+	try {
+		await FontLoader.load(settings.fontFamily);
+		const clockManager = new ClockManager(settings);
+		clockManager.start();
+	} catch (error) {
+		console.error('Failed to initialize clock:', error);
+		document.getElementById('clockLabel').innerText = 'Error loading clock';
+	}
+}
+
+init();
